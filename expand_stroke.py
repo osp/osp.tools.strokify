@@ -8,7 +8,7 @@ import sys
 LETTERS_DIR = "./tmp"
 
 FONT_NAME = "%s" % sys.argv[1].replace(" ", "-")
-BASE_FONT = "./i/%s.sfd" % FONT_NAME
+BASE_FONT = "base_font/%s.sfd" % FONT_NAME
 FONT = "%s-stroke.ufo" % FONT_NAME
 BASE_NAME = sys.argv[2]
 WEIGHT = int(sys.argv[3])
