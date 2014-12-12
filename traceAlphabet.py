@@ -98,9 +98,9 @@ for glyph in glyphs:
     p = subprocess.call(shlex.split(sed))
 
 print "Launching svg2ufo"
-svg2ufo = "python2 svg2ufo.py %s" % fontname
+svg2ufo = "python svg2ufo.py %s" % fontname
 p = subprocess.call(shlex.split(svg2ufo))
 
 print "Attempt to open closed paths"
-ufoclean = "python2 openClosedPaths.py %s-stroke.ufo" % fontname
+ufoclean = "python openClosedPaths.py %s-stroke.ufo" % fontname
 p = subprocess.call(shlex.split(ufoclean))
