@@ -16,6 +16,13 @@ Usage:
 
 Where "TeX Gyre Termes" is the font family name.
 
+# Gets list of wanted glyphs (traceAlphabet.py)
+	f = open("glyphs.test.txt", "r")
+while 
+glyphs.test.txt  is a file is a test version with only 3 glyphs
+glyphs.latin1.txt  is a file with all communnnecessary glyphs to have a full latin alphabet
+glyphs-balsa.txt  is the file used to produce all the glyphs for the balsa 14-15 season project
+
 
 ## openClosedPaths.py
 

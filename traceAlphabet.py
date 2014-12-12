@@ -81,14 +81,14 @@ for glyph in glyphs:
     p = subprocess.call(shlex.split(inkscape))
 
     # This is only for Steph's machine which fails on autotracing png, but it makes the script super slow
-    if convert == "convert":
-        print "Convert PNG to GIF"
-        imagemagick = "convert %s.png %s.gif" % (basename, basename)
-        p = subprocess.call(shlex.split(imagemagick))
+    #if convert == "convert":
+     #   print "Convert PNG to GIF"
+      #"  imagemagick = "convert %s.png %s.gif" % (basename, basename)
+       # p = subprocess.call(shlex.split(imagemagick))
 
-    print "Vectorize bitmap with stroke"
-    autotrace = "autotrace -centerline -color-count=2 -background-color=ffffff -output-file=%s.svg %s.gif" % (basename, basename)
-    p = subprocess.call(shlex.split(autotrace))
+    #print "Vectorize bitmap with stroke"
+    #autotrace = "autotrace -centerline -color-count=2 -background-color=ffffff -output-file=%s.svg %s.gif" % (basename, basename)
+    #p = subprocess.call(shlex.split(autotrace))
 
     # Setting "stroke" to "none" forces stroke import in Fontforge
     style = "style=\"stroke:none;fill:none;\""
@@ -98,9 +98,9 @@ for glyph in glyphs:
     p = subprocess.call(shlex.split(sed))
 
     print "Launching svg2ufo"
-    svg2ufo = "python2 svg2ufo.py %s" % font_file
+    svg2ufo = "python svg2ufo.py %s" % font_file
     p = subprocess.call(shlex.split(svg2ufo))
 
     print "Attempt to open closed paths"
-    ufoclean = "python2 openClosedPath.py %s-stroke.ufo" % fontname
+    ufoclean = "python openClosedPath.py %s-stroke.ufo" % fontname
     p = subprocess.call(shlex.split(ufoclean))
