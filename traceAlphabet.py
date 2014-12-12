@@ -77,6 +77,7 @@ for glyph in glyphs:
     makeSVG(fontname, Yshift, tmp_dir, glyph)
 
     print "Export SVG into PNG"
+    format = "png"
     inkscape = "inkscape --export-png=%s.png --export-background=#ffffff --export-width=4000 %s.svg" % (basename, basename)
     p = subprocess.call(shlex.split(inkscape))
 
@@ -85,9 +86,10 @@ for glyph in glyphs:
         print "Convert PNG to GIF"
         imagemagick = "convert %s.png %s.gif" % (basename, basename)
         p = subprocess.call(shlex.split(imagemagick))
+        format = "gif"
 
     print "Vectorize bitmap with stroke"
-    autotrace = "autotrace -centerline -color-count=2 -background-color=ffffff -output-file=%s.svg %s.gif" % (basename, basename)
+    autotrace = "autotrace -centerline -color-count=2 -background-color=ffffff -output-file=%s.svg %s.%s" % (basename, basename, format)
     p = subprocess.call(shlex.split(autotrace))
 
     # Setting "stroke" to "none" forces stroke import in Fontforge

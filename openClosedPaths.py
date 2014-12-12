@@ -48,7 +48,6 @@ for letter in letters:
 
 
 
-        import ipdb; ipdb.set_trace()
         glyph = parseXml("%s%s.glif" % (GLYPH_DIR, letter))
         # Gets contours descriptions of the glyph
         contours = glyph.getElementsByTagName("contour")
