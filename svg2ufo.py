@@ -24,7 +24,7 @@ from xml.dom.minidom import parse as parseXml
 # files are; they ought to be named according to their unicode value
 
 LETTERS_DIR = "./tmp"
-FONT_NAME = "%s" % sys.argv[1].replace(" ", "-")
+FONT_NAME = "%s" % sys.argv[1]
 BLANK_FONT = "./utils/blank_unicode.sfd"
 #BASE_FONT = "./base_font/%s.sfd" % FONT_NAME
 STROKE_FONT = "%s-stroke.ufo" % FONT_NAME

@@ -9,12 +9,13 @@ import fontforge
 
 
 # Gets list of wanted glyphs
-f = open("glyphs.txt", "r")
+f = open("glyphs.test.txt", "r")
 letters = f.read().splitlines()
 f.close()
 
 #STROKE_FONT = "%s-stroke.ufo" % sys.argv[1].replace(" ", "-")
-STROKE_FONT = "%s-stroke.ufo" % sys.argv[1]
+#STROKE_FONT = "%s-stroke.ufo" % sys.argv[1]
+STROKE_FONT = "%s" % sys.argv[1]
 GLYPH_DIR = "%s/glyphs/" % STROKE_FONT
 
 for letter in letters:
@@ -47,11 +48,13 @@ for letter in letters:
 
 
 
+        import ipdb; ipdb.set_trace()
         glyph = parseXml("%s%s.glif" % (GLYPH_DIR, letter))
         # Gets contours descriptions of the glyph
         contours = glyph.getElementsByTagName("contour")
 
         for contour in contours:
+            print contour.childNodes[1]
             try:
                 # Checks type of first node of the countour
                 type= contour.childNodes[1].attributes["type"].value
@@ -67,7 +70,7 @@ for letter in letters:
                     # Changing first "line" to "move"
                     contour.childNodes[2].attributes["type"].value = "move"
             except KeyError:
-                print "Did not work."
+                print "Did not work. KeyError"
                 pass
 
 
@@ -77,6 +80,6 @@ for letter in letters:
         f.close()
     except IOError:
         # In case it still doesn't work, it passes. i.e: €
-        print "%s did not work." % char
+        print "%s did not work. IOError" % char
         pass
 
